@@ -1,5 +1,5 @@
 pkgname=vanta
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Vanta Device Monitor"
 arch=('x86_64')
@@ -8,7 +8,7 @@ depends=('systemd')
 license=('custom:vanta')
 source=("https://agent-downloads.vanta.com/targets/versions/${pkgver}/vanta-amd64.deb"
         'vanta.service.patch')
-sha256sums=('21845a5e9477cfb61f779a9c1d9af2c9ad94cd7f6b95d8dd076effb935ee7d49'
+sha256sums=('02ba826388dee61aaf3e97f4bec61896620bc616754e7d107c0efcc79abd43a0'
             '43b2806cf7a94dc196a4809dfaa9551c11c1e37bad4b5490d548b426b337b46e')
 
 prepare() {
