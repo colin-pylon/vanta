@@ -1,15 +1,17 @@
 pkgname=vanta
 pkgver=2.15.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Vanta Device Monitor"
 arch=('x86_64')
 url="https://www.vanta.com/"
 depends=('systemd')
 license=('custom:vanta')
 source=("https://agent-downloads.vanta.com/targets/versions/${pkgver}/vanta-amd64.deb"
-        'vanta.service.patch')
+        'vanta.service.patch'
+        'os-release.ubuntu_2510')
 sha256sums=('02ba826388dee61aaf3e97f4bec61896620bc616754e7d107c0efcc79abd43a0'
-            '43b2806cf7a94dc196a4809dfaa9551c11c1e37bad4b5490d548b426b337b46e')
+            'ce07b3808d383da080aaa16f624c5bbe330cd6b1e8cbbb5a92da6040896fbe13'
+            'ca797d0269b7ddff84abb951c1cf52531d686dd2d082942a4cae1c9a364bc611')
 
 prepare() {
     mkdir -p data
@@ -27,6 +29,7 @@ package() {
     install -Dm755 data/var/vanta/osqueryd "$pkgdir"/var/vanta/osqueryd
     install -Dm755 data/var/vanta/osquery-vanta.ext "$pkgdir"/var/vanta/osquery-vanta.ext
     install -Dm755 data/var/vanta/vanta-cli "$pkgdir"/var/vanta/vanta-cli
+    install -Dm755 os-release.ubuntu_2510 "$pkgdir"/etc/os-release.ubuntu_2510
     mkdir -pm755 "$pkgdir"/usr/bin
     ln -s --relative "$pkgdir"/var/vanta/vanta-cli "$pkgdir"/usr/bin/vanta-cli
 }

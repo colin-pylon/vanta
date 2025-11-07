@@ -1,7 +1,7 @@
 diff -ura data/usr/lib/systemd/system/vanta.service data.new/usr/lib/systemd/system/vanta.service
 --- data/usr/lib/systemd/system/vanta.service	2025-05-27 08:19:12.000000000 -0700
 +++ data.new/usr/lib/systemd/system/vanta.service	2025-11-06 09:47:14.734898045 -0800
-@@ -1,14 +1,10 @@
+@@ -1,14 +1,12 @@
  [Unit]
 -Description=Vanta monitoring software
 -After=network.service syslog.service
@@ -10,8 +10,10 @@ diff -ura data/usr/lib/systemd/system/vanta.service data.new/usr/lib/systemd/sys
  
  [Service]
 -TimeoutStartSec=0
++Type=exec
  ExecStart=/var/vanta/metalauncher
  Restart=on-failure
++BindPaths=/etc/os-release.ubuntu_2510:/etc/os-release
 -KillMode=control-group
 -KillSignal=SIGTERM
  
